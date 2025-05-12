@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+    /* Padding to make it within a width - Makes life easier as we set up page layout  */
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+}
+
+h3 { text-align: center; }
+
+section { padding: 40px 20px; }
+
+.introduction, .content-body { margin-bottom: 40px; }
+
+header
+{
+    display: flex;
+    justify-content: center;
+    /**padding: 1em;*/
+}
+
+.header_logo img {
+
+        display: block;
+        max-width: 100%;
+
+}
+
+@media(min-width: 800px){
+    .introduction__container{
+        display: flex;
+        justify-content: center;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .introduction_column + .introduction_column { margin-left: 2em; }
+}
+
+.myImages img{
+    width: 25%;
+    padding-bottom: 5px;
+}
+
+.content-images{
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+   }
+
+
+.myImages {
+
+    display: none;
+}
+
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+
+.introduction { background-color: lightgray; }
+
+.content-body { background-color: lightgray; }
+
+.footer {
+    text-align: center;
+    padding-bottom: 0;
+}
+
+.footer a { text-decoration: none; }
+
+.social-list__footer {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 2em 0 0;
+}
+
+.social-list__link:hover { opacity: 0.7; }
