@@ -68,7 +68,7 @@ header {
 =========================== */
 .content-images {
     position: relative;
-    height: 575px;
+    height: 580px;
     max-width: 100%;
     max-height: 100%;
     margin: auto;
@@ -96,6 +96,9 @@ header {
     transition: background-color 0.6s ease;
 }
 
+.carouselButtons {
+    padding: 15px 15px;
+}
 
 /* ===========================
    Footer Styles
