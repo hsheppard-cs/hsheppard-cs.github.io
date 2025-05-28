@@ -1,116 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic Page Metadata -->
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Sheppard Studios Portfolio Website</title>
 
-    <!-- CSS Link -->
+    <!-- Normalize CSS for consistent rendering across browsers -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <!-- Font Awesome for social and UI icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
           integrity="sha384-SZXxX4whJ79/GFRRrBluhUnK/x0hA4+lDRf3TPOFlCn8eHfRs2z6p9P49mR6YowJ" crossorigin="anonymous">
-
     <script src="https://kit.fontawesome.com/0f10437afe.js" crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap"
-          rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-
+<!-- =================== Header Section =================== -->
 <header>
     <div class="header_logo">
-        <img src = "img/Untitled drawing.png" alt="sheppardstudies_logo" class="header_logo__img">
+        <!-- Portfolio logo -->
+        <img src="img/Untitled drawing.png" alt="sheppardstudies_logo" class="header_logo__img">
     </div>
 </header>
 
-<!-- INTRODUCTION -->
+<!-- =================== Introduction Section =================== -->
 <section class="introduction" id="introduction">
     <div class="introduction__container">
 
-    <div class="introduction_column">
-        <h3>About Me</h3>
-        <p>
-           Experienced software engineer with a demonstrated history of developing
-            scalable, robust software solutions that tackle business problems, reduce operational costs, and improve
-            workflow efficiency.
-        </p>
+        <!-- ====== Column 1: About Me ====== -->
+        <div class="introduction_column">
+            <h3>About Me</h3>
+            <p>
+                Experienced software engineer with a demonstrated history of developing
+                scalable, robust software solutions that tackle business problems, reduce operational costs, and improve
+                workflow efficiency.
+            </p>
+            <p>
+                Actively leveraging ML and A.I. technologies, in which I utilize readily available data to
+                identify patterns, personalize user experiences, and predict outcomes based on prior historical sets.
+            </p>
+            <p>
+                Skilled in: Java, Data Structures and Algorithms, PyTorch, TensorFlow
+            </p>
+        </div>
 
-        <p>
-            Actively leveraging ML and A.I. technologies, in which I utilize readily available data to
-            identify patterns, personalize user experiences, and predict outcomes based on prior historical sets.
-        </p>
+        <!-- ====== Column 2: Work Experience ====== -->
+        <div class="introduction_column">
+            <h3>Work Experience</h3>
+            <p>
+                I possess over 2 years of experience within the Financial Technology industry.
+            </p>
 
-        <p>
-            Skilled in: Java, Data Structures and Algorithms, PyTorch, TensorFlow
-        </p>
+            <h3>Notable experience highlights</h3>
+            <p>
+                Integrated REST APIs into automations, enabling real-time data exchange of
+                financial documents between secure data storage locations; utilized advanced OCR algorithms to extract,
+                verify, and prepare textual data for necessary business stakeholders.
+            </p>
+            <p>
+                Led the design, development, and deployment of a full-stack data application, seamlessly transferring
+                100,000+ records from a MongoDB database to a centralized dashboard with 10-second response times;
+                leveraged Python's Streamlit to build a dynamic interface for real-time data filtering.
+            </p>
+        </div>
     </div>
-
-    <div class="introduction_column">
-        <h3>Work Experience</h3>
-
-        <p>
-            I possess over 2 years of experience within the Financial Technology industry.
-            <br><br>
-
-        </p>
-
-        <h3>Notable experience highlights</h3>
-
-        <p>
-            Integrated REST APIs into automations, enabling real-time data exchange of
-            financial documents between secure data storage locations; utilized advanced OCR algorithms to extract, verify, and prepare textual data for necessary business stakeholders
-        </p>
-
-        <p>
-            Led the design, development, and deployment of a full-stack data application, seamlessly transferring 100,000+ records from a
-            MongoDB database to a centralized dashboard  with 10-second response times; leveraged Python's Streamlit to build a dynamic interface for real-time data filtering
-        </p>
-    </div>
-    </div>
-
 </section>
 
-
+<!-- =================== Image Carousel Section =================== -->
 <section class="content-body" id="content-body">
 
+    <h3>Projects</h3>
+
+    <!-- Carousel Images -->
     <div class="content-images">
 
+        <!-- Slide 1 -->
         <div class="myImages" style="text-align: center">
-        <img src="img/2models.jpg" alt="2 Models Standing">
+            <p>Image Colorizer</p>
+            <p>Fine-tuning of a Pretrained Stable Diffusion Model to<br>colorize B/W images</p>
+            <p>Download full research paper below</p>
+            <p><a href="files/Image_Colorizer_ResearchPaper.pdf" download>
+            <img src="img/ITCS_4152_ImageColorizer.png" alt="Computer Vision, Image Colorizer Research Paper" width="400" height="400">
+            </a></p>
         </div>
 
+        <!-- Slide 2 -->
         <div class="myImages" style="text-align: center">
-        <img src="img/objectsontable.jpg" alt="Objects on Table">
+            <p>Evolve</p>
+            <p>Programming Language: GameMaker Language (GML)</p>
+            <p><a href="https://github.com/hsheppard-cs/ITCS_4230_Evolve/tree/main" target="_blank">
+            <img src="img/ITCS_4230_Evolve.png" alt="Video Game Development, Interactive and Immersive Game" width="400" height="400">
+                </a></p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="myImages" style="text-align: center">
+            <p><b>Same Rhythm Radar, an LLM Music Recommender</b></p>
+            <p>Programming Languages: Python, HTML, CSS</p>
+            <p>Frameworks Utilized: Bootstrap CSS</p>
+            <p><a href="https://github.com/BerkleySitterson/SRR" target="_blank">
+            <img src="img/SameRhythmRadar.png" alt="LLM" width="400" height="400">
+                </a></p>
         </div>
 
     </div>
 
+    <!-- Carousel Dots/Indicators -->
     <div style="text-align: center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
+        <button onclick="changeSlide(-1)">Previous</button>
+        <button onclick="changeSlide(1)">Next</button>
     </div>
 
 </section>
 
-
+<!-- =================== Footer Section =================== -->
 <footer class="footer">
-  <!-- Social Icons -->
-  <ul class="social-list__footer">
-
-    <li class="social-list__item">
-      <a class="social-list__link" href="https://www.linkedin.com/in/hamilton-sheppard/">
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-    </li>
-  </ul>
-
+    <!-- Social Media Links -->
+    <ul class="social-list__footer">
+        <li class="social-list__item">
+            <a class="social-list__link" href="https://www.linkedin.com/in/hamilton-sheppard/">
+                <i class="fa-brands fa-linkedin fa-xl"></i>
+            </a>
+        </li>
+    </ul>
 </footer>
 
+<!-- JavaScript for slideshow functionality -->
 <script src="js/index.js"></script>
 
 </body>
