@@ -407,6 +407,71 @@ header.scrolled .header_logo img {
 }
 
 /* ===========================
+   LEGACY CODE: IMAGE CAROUSEL
+   ===========================
+   The code below is commented out but preserved for reference.
+   Previously used for a slideshow/carousel of projects.
+   Replaced by the card grid layout above for better UX and accessibility.
+
+   Functionality:
+   - Single project displayed at a time
+   - Previous/Next buttons to navigate
+   - JavaScript in index.js handled slide transitions
+   - Now deprecated in favor of static grid showing all projects
+
+   To re-enable carousel:
+   1. Uncomment this CSS block
+   2. Uncomment carousel HTML in index.html
+   3. Update index.js slideshow functions
+   ===========================
+*/
+/**
+
+.content-images {
+    position: relative;
+    min-height: 550px;
+}
+
+.myImages {
+    display: none;
+    text-align: center;
+}
+
+.myImages img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.myImages video {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.carouselButtons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.carouselButtons button {
+    padding: 8px 18px;
+    margin: 0 10px;
+    border: none;
+    background: #333;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.carouselButtons button:hover {
+    background: #555;
+}
+
+*/
+
+/* ===========================
    6. FOOTER
    ===========================
    Site footer containing social media links and contact information.
