@@ -1,127 +1,542 @@
+/* ==========================================
+   SHEPPARD STUDIOS PORTFOLIO - STYLESHEET
+   ==========================================
+
+   TABLE OF CONTENTS:
+   1. Base / Global Styles
+   2. Design System (CSS Custom Properties)
+   3. Layout System
+   4. Header & Navigation
+   5. Skills Grid
+   6. Projects Section
+   7. Certifications Section
+   8. Footer
+
+   DESIGN PRINCIPLES:
+   - Mobile-first responsive design
+   - CSS Grid & Flexbox for layouts
+   - Custom properties for consistency
+   - BEM-like naming convention
+   - Smooth transitions and hover effects
+   ========================================== */
+
 /* ===========================
-   Global Styles
-=========================== */
+   1. BASE / GLOBAL STYLES
+   =========================== */
+
+/* ========== CSS Custom Properties (Design Tokens) ==========
+   Centralized design system variables for easy maintenance
+   and consistent styling across the entire site.
+*/
+:root {
+    /* Spacing Scale: Consistent spacing using a geometric progression */
+    --space-xs: 0.5rem;   /* 8px  - Minimal spacing */
+    --space-sm: 1rem;     /* 16px - Small spacing */
+    --space-md: 2rem;     /* 32px - Medium spacing */
+    --space-lg: 4rem;     /* 64px - Large spacing */
+    --space-xl: 8rem;     /* 96px - Extra large spacing */
+
+    /* Container Max Widths: Controls content width for readability */
+    --container-narrow: 900px;  /* Text-heavy sections */
+    --container-wide: 1200px;   /* Media-rich sections */
+
+    /* Color Palette */
+    --bg-section: #f5f5f7;    /* Light gray section background */
+    --bg-page: #ffffff;       /* White page background */
+    --divider: #e5e5e7;       /* Subtle divider color */
+}
+
+/* ========== Box Model Reset ==========
+   Ensures padding and border are included in element's total width/height
+*/
 *,
 *::before,
 *::after {
-    box-sizing: border-box; /* Ensures consistent box sizing */
+    box-sizing: border-box;
 }
 
+/* ========== HTML Root ==========
+   Enables smooth scrolling for anchor link navigation
+*/
 html {
     scroll-behavior: smooth;
 }
 
+/* ========== Body Base Styles ========== */
 body {
-    font-family: 'Manrope', sans-serif;
-    font-size: 22px;
-    margin: 0;
+    font-family: 'Manrope', sans-serif;  /* Primary font */
+    font-size: 18px;                      /* Base font size */
+    line-height: 1.6;                     /* Comfortable reading line height */
+    margin: 0;                            /* Remove default margin */
+    color: #222;                          /* Dark gray text color */
 }
 
+/* ========== Heading Styles ========== */
 h3 {
     text-align: center;
+    margin-bottom: 2rem;
 }
 
-section {
-    padding: 15px 20px;
+/* ===========================
+   2. LAYOUT SYSTEM
+   ===========================
+   Reusable layout components for consistent spacing and structure.
+   Uses the "full-width background, constrained content" pattern.
+*/
+
+/* ========== Section Container ==========
+   Full-width sections with background colors
+   - Provides vertical padding using design tokens
+   - scroll-margin-top compensates for sticky header offset
+*/
+.section {
+    padding: var(--space-xl) var(--space-md);  /* 96px top/bottom, 32px left/right */
+    scroll-margin-top: 120px;                  /* Offset for sticky header when scrolling to anchors */
+    background: var(--bg-section);             /* Light gray background */
 }
 
-.introduction,
-.content-body {
-    margin-bottom: 40px;
-    background-color: lightgray;
+/* ========== Section Inner Container ==========
+   Constrains content width for better readability
+   - Centers content with auto margins
+   - Prevents text from stretching too wide on large screens
+*/
+.section__inner {
+    max-width: var(--container-narrow);  /* 900px max width */
+    margin: 0 auto;                      /* Centers horizontally */
+}
+
+/* Modifier for sections needing more width (e.g., Projects) */
+.section__inner--wide {
+    max-width: var(--container-wide);  /* 1200px max width */
+}
+
+/* ========== Section Title Styling ========== */
+.section__title {
+    text-align: center;
+    font-size: 2rem;                 /* 32px */
+    margin-bottom: var(--space-lg);  /* 64px spacing below title */
+    font-weight: 600;                /* Semi-bold */
+    letter-spacing: -0.02em;         /* Tighter letter spacing for modern look */
+}
+
+/* ========== Alternate Section Background ==========
+   Modifier class for alternating section backgrounds (creates visual rhythm)
+*/
+.section--alt {
+    background: #ffffff;  /* White background instead of light gray */
+}
+
+/* ========== Paragraph Spacing ========== */
+p {
+    margin-bottom: var(--space-md);  /* 32px spacing between paragraphs */
+}
+
+/* ========== Generic Container Classes ==========
+   Reusable container classes for constraining content width
+*/
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.container--narrow {
+    max-width: 800px;
+}
+
+.container--wide {
+    max-width: 1200px;
 }
 
 
 /* ===========================
-   Header Styles
-=========================== */
+   3. HEADER & NAVIGATION
+   ===========================
+   Sticky header that shrinks on scroll for better UX.
+   JavaScript in index.js adds/removes 'scrolled' class based on scroll position.
+*/
+
+/* ========== Header Base Styles ==========
+   Sticky positioning keeps header at top of viewport while scrolling
+*/
 header {
-    display: flex;
-    justify-content: center;
+    position: sticky;              /* Stays at top when scrolling */
+    top: 0;                        /* Sticks to top edge */
+    width: 100%;                   /* Full viewport width */
+    z-index: 1000;                 /* Ensures header stays above all content */
+
+    background: #ffffff;           /* Solid white background */
+    backdrop-filter: blur(8px);    /* Frosted glass effect (Safari/modern browsers) */
+
+    transition: all 0.3s ease;     /* Smooth transitions for all property changes */
 }
 
+/* ========== Header Inner Container ==========
+   Flexbox layout: Logo on left, navigation on right
+*/
+.header-inner {
+    display: flex;
+    justify-content: space-between;  /* Pushes logo left, nav right */
+    align-items: center;             /* Vertically centers content */
+    padding: 20px;                   /* Normal state padding */
+}
+
+/* ========== Scrolled State ==========
+   When user scrolls down, JavaScript adds 'scrolled' class to header
+   This triggers the shrinking effect for a more compact header
+*/
+header.scrolled .header-inner {
+    padding: 12px 20px;  /* Reduced padding when scrolled */
+}
+
+header.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);  /* Subtle shadow for depth */
+}
+
+/* ========== Logo Styles ==========
+   Logo shrinks when user scrolls for a cleaner, compact header
+*/
 .header_logo img {
-    display: block;
-    max-width: 100%;
+    max-width: 200px;            /* Normal logo size */
+    height: auto;                /* Maintains aspect ratio */
+    transition: all 0.3s ease;   /* Smooth size transition */
 }
 
-
-/* ===========================
-   Introduction Section
-=========================== */
-@media (min-width: 800px) {
-    .introduction__container {
-        display: flex;
-        justify-content: center;
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-
-    .introduction_column + .introduction_column {
-        margin-left: 2em;
-    }
-}
-
-
-/* ===========================
-   Image/Carousel Section
-=========================== */
-.content-images {
-    position: relative;
-    height: 625px;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
-}
-
-.myImages {
-    display: none;
-    text-align: center;
-}
-
-.myImages img {
-    /*width: 25%;*/
-    padding-bottom: 20px;
-}
-
-/* Carousel dots */
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.carouselButtons {
-    padding: 0px;
-    padding-bottom: 30px;
-   
+/* Logo shrinks to 140px when scrolled */
+header.scrolled .header_logo img {
+    max-width: 140px;  /* 30% smaller when scrolled */
 }
 
 /* ===========================
-   Footer Styles
-=========================== */
-.footer {
-    text-align: center;
-}
+   NAVIGATION MENU
+   ===========================
+   Horizontal navigation with smooth anchor scrolling to page sections.
+*/
 
-.footer a {
-    text-decoration: none;
-}
-
-.social-list__footer {
-    list-style: none;
+/* ========== Nav Container ========== */
+.nav {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;  /* Aligns nav items to the right */
+}
+
+/* ========== Navigation List ==========
+   Horizontal list of navigation links with consistent spacing
+*/
+.nav__list {
+    list-style: none;       /* Removes default bullet points */
+    display: flex;          /* Horizontal layout */
+    gap: 30px;              /* Spacing between nav items */
+    margin: 0;              /* Removes default margin */
+    padding: 0;             /* Removes default padding */
+    align-items: center;    /* Vertically centers items */
+}
+
+/* ========== Navigation Links ==========
+   Styled anchor links with hover effects
+*/
+.nav__link {
+    text-decoration: none;          /* Removes underline */
+    color: #333;                    /* Dark gray text */
+    font-weight: 500;               /* Medium font weight */
+    font-size: 15px;                /* Slightly smaller than body text */
+    padding: 8px 12px;              /* Clickable area padding */
+    border-radius: 6px;             /* Rounded corners */
+    transition: all 0.25s ease;     /* Smooth hover transitions */
+}
+
+/* ========== Link Hover State ==========
+   Interactive feedback when hovering over navigation links
+*/
+.nav__link:hover {
+    background-color: #333;         /* Dark background on hover */
+    color: #fff;                    /* White text on hover */
+    transform: translateY(-2px);    /* Slight upward lift effect */
+}
+
+/* ===========================
+   4. SKILLS GRID
+   ===========================
+   Responsive multi-column grid layout for displaying technical skills.
+   Automatically adjusts from 1 to 5 columns based on screen width.
+*/
+
+/* ========== Skills Grid Container ==========
+   CSS Grid with auto-fit creates responsive columns without media queries
+*/
+.skills-grid {
+    list-style: none;  /* Removes default list styling */
     padding: 0;
-    margin: 2em 0 0;
-    padding-bottom: 20px;
+    margin: 0;
+
+    display: grid;
+    /* auto-fit: Creates as many columns as will fit
+       minmax(250px, 1fr): Each column min 250px, max equal width
+       Result: 3-5 columns on desktop, fewer on smaller screens */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px 30px;  /* 15px row gap, 30px column gap */
+}
+
+/* ========== Individual Skill Items ==========
+   Custom bullet points using CSS pseudo-element
+*/
+.skills-grid li {
+    position: relative;      /* Enables absolute positioning of ::before */
+    padding-left: 22px;      /* Space for custom bullet */
+}
+
+/* Custom bullet point (replaces default list style) */
+.skills-grid li::before {
+    content: "•";           /* Bullet character */
+    position: absolute;     /* Positions relative to li */
+    left: 0;                /* Aligns to left edge */
+    font-weight: bold;      /* Emphasizes bullet */
+}
+
+/* ========== Highlights List (Legacy/Alternative Style) ========== */
+.highlights-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.highlights-list li {
+    margin-bottom: var(--space-md);  /* 32px spacing between items */
+}
+
+/* ===========================
+   5. PROJECTS SECTION
+   ===========================
+   Portfolio showcase using card-based grid layout.
+   Features elevated card design with hover effects.
+*/
+
+/* ========== Projects Grid Container ==========
+   Responsive grid that automatically adjusts column count
+*/
+.projects {
+    display: grid;
+    /* Creates 1-3 columns based on available space
+       Each column minimum 320px wide */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 64px;           /* Large spacing between project cards */
+    margin-top: 64px;    /* Space below section title */
+}
+
+/* ========== Project Card Component ==========
+   Individual project cards with image, description, and links
+   Modern card design with elevation and hover effects
+*/
+.project-card {
+    background: #ffffff;            /* White card background */
+    border-radius: 16px;            /* Rounded corners */
+    overflow: hidden;               /* Clips content to rounded corners */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);  /* Subtle elevation shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth hover animation */
+}
+
+/* ========== Card Hover Effect ==========
+   Interactive lift effect when hovering over cards
+*/
+.project-card:hover {
+    transform: translateY(-8px);                   /* Lifts card up 8px */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);     /* Larger shadow on hover */
+}
+
+/* ========== Project Media (Images & Videos) ==========
+   Ensures media fills card width and maintains aspect ratio
+*/
+.project-card__media img,
+.project-card__media video {
+    width: 100%;      /* Full width of card */
+    display: block;   /* Removes inline gap below media */
+}
+
+/* ========== Project Content Area ==========
+   Contains title, description, tags, and links
+*/
+.project-card__content {
+    padding: 32px;  /* Generous padding around text content */
+}
+
+/* ========== Project Links ==========
+   Call-to-action links for GitHub repos and downloads
+*/
+.project-card__link {
+    display: inline-block;     /* Allows margin and padding */
+    margin-top: 16px;          /* Space above link */
+    text-decoration: none;     /* No underline */
+    font-weight: 600;          /* Semi-bold text */
+    color: #333;               /* Dark gray color */
+}
+
+.project-card__link:hover {
+    opacity: 0.7;  /* Subtle fade on hover */
+}
+
+/* ===========================
+   PROJECT TECHNOLOGY TAGS
+   ===========================
+   Pill-shaped tags displaying technologies used in each project.
+*/
+
+/* ========== Tags Container ==========
+   Flexbox layout allows tags to wrap to multiple lines if needed
+*/
+.project-card__tags {
+    display: flex;
+    flex-wrap: wrap;     /* Allows tags to wrap to next line */
+    gap: 10px;           /* Spacing between tags */
+    margin-top: 16px;    /* Space above tag group */
+}
+
+/* ========== Individual Tag Styling ==========
+   Pill-shaped badges with hover effect
+*/
+.tag {
+    padding: 6px 14px;           /* Comfortable padding */
+    font-size: 14px;             /* Smaller than body text */
+    font-weight: 500;            /* Medium weight */
+    background: #f2f2f2;         /* Light gray background */
+    border-radius: 999px;        /* Fully rounded (pill shape) */
+    color: #333;                 /* Dark text */
+    transition: all 0.2s ease;   /* Smooth hover transition */
+}
+
+.tag:hover {
+    background: #e6e6e6;  /* Slightly darker on hover */
+}
+
+/* ===========================
+   6. FOOTER
+   ===========================
+   Site footer containing social media links and contact information.
+*/
+
+/* ========== Footer Container ========== */
+.footer {
+    background: #fff;         /* White background */
+    padding: 40px 20px;       /* Vertical and horizontal padding */
+    text-align: center;       /* Centers all content */
+}
+
+/* ========== Social Media Links List ==========
+   Horizontal list of social media icon links
+*/
+.social-list__footer {
+    list-style: none;         /* Removes bullets */
+    display: flex;            /* Horizontal layout */
+    justify-content: center;  /* Centers links horizontally */
+    padding: 0;               /* Removes default padding */
+    margin: 0;                /* Removes default margin */
+}
+
+/* ========== Social Link Styling ==========
+   Icon links with hover fade effect
+*/
+.social-list__link {
+    color: #333;                    /* Dark gray icons */
+    font-size: 24px;                /* Large icon size */
+    transition: opacity 0.3s ease;  /* Smooth fade transition */
 }
 
 .social-list__link:hover {
-    opacity: 0.7;
+    opacity: 0.6;  /* Fades to 60% opacity on hover */
+}
+
+/* ===============================
+   7. CERTIFICATIONS SECTION
+   ===============================
+   Displays professional certifications and achievements
+   in a clean, card-based grid layout.
+*/
+
+/* ========== Certifications Grid Container ==========
+   Responsive grid that adapts to screen width
+*/
+.cert-grid {
+    display: grid;
+    /* Creates as many columns as fit, each min 280px wide */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;       /* 40px spacing between cards */
+    margin-top: 3rem;  /* 48px space below section title */
+}
+
+/* ========== Certification Card Component ==========
+   Individual certification cards with logo, title, and metadata
+*/
+.cert-card {
+    background: #ffffff;                       /* White background */
+    padding: 2rem;                             /* 32px padding */
+    border-radius: 16px;                       /* Rounded corners */
+    border: 1px solid rgba(0,0,0,0.06);       /* Subtle border */
+    transition: all 0.25s ease;                /* Smooth hover animation */
+}
+
+/* ========== Card Hover Effect ==========
+   Subtle lift effect on hover
+*/
+.cert-card:hover {
+    transform: translateY(-4px);                  /* Lifts card up 4px */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);    /* Elevation shadow */
+}
+
+/* ========== Card Header (Logo + Title) ==========
+   Flexbox layout aligns logo and text side-by-side
+*/
+.cert-card__header {
+    display: flex;        /* Horizontal layout */
+    align-items: center;  /* Vertically centers logo and text */
+    gap: 1rem;            /* 16px spacing between logo and text */
+}
+
+/* ========== Certification Logo ==========
+   Company/organization logo (e.g., Google Cloud, UiPath)
+*/
+.cert-card__logo {
+    width: 40px;          /* Fixed square dimensions */
+    height: 40px;
+    object-fit: contain;  /* Maintains logo aspect ratio */
+}
+
+/* ========== Icon Container (Alternative to Logo) ==========
+   For certifications without logo images, uses Font Awesome icons
+*/
+.cert-card__icon {
+    font-size: 1.5rem;           /* 24px icon size */
+    background: #f4f4f4;         /* Light gray background */
+    width: 40px;                 /* Fixed square dimensions */
+    height: 40px;
+    border-radius: 10px;         /* Rounded corners */
+    display: flex;
+    align-items: center;         /* Centers icon */
+    justify-content: center;
+}
+
+/* ========== Certification Title ========== */
+.cert-card h3 {
+    margin: 0;            /* Removes default margin */
+    font-size: 1.05rem;   /* Slightly larger than body text */
+    font-weight: 600;     /* Semi-bold */
+}
+
+/* ========== Issuing Organization ========== */
+.cert-card__issuer {
+    margin: 0.25rem 0 0 0;  /* Small top margin */
+    font-size: 0.9rem;       /* Smaller than title */
+    color: #666;             /* Medium gray */
+}
+
+/* ========== Certification Metadata (Issue Date) ========== */
+.cert-card__meta {
+    margin-top: 1.5rem;      /* 24px space above */
+    font-size: 0.85rem;      /* Small text */
+    color: #888;             /* Light gray */
+    letter-spacing: 0.5px;   /* Slightly spaced letters */
+}
+
+/* ========== Merit Card Modifier ==========
+   Optional gradient background for special achievements/merits
+*/
+.cert-card--merit {
+    background: linear-gradient(135deg, #fafafa, #f5f5f5);  /* Subtle gradient */
 }
