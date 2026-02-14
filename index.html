@@ -1,139 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Basic Page Metadata -->
+    <!-- ==========================================
+         Document Metadata
+         Sets up character encoding, viewport, and page title
+         ========================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sheppard Studios Portfolio Website</title>
 
-    <!-- Normalize CSS for consistent rendering across browsers -->
+    <!-- ==========================================
+         External Stylesheets
+         ========================================== -->
+
+    <!-- Normalize CSS: Ensures consistent rendering across all browsers -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
-    <!-- Font Awesome for social and UI icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          integrity="sha384-SZXxX4whJ79/GFRRrBluhUnK/x0hA4+lDRf3TPOFlCn8eHfRs2z6p9P49mR6YowJ" crossorigin="anonymous">
+    <!-- Font Awesome: Icon library for social media and UI icons -->
     <script src="https://kit.fontawesome.com/0f10437afe.js" crossorigin="anonymous"></script>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Manrope font family with variable weights (200-800) -->
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 
-    <!-- Custom Stylesheet -->
+    <!-- Custom Stylesheet: Main styling for the portfolio -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- =================== Header Section =================== -->
+<!-- ==========================================
+     HEADER SECTION
+     ==========================================
+     Sticky navigation header that stays at the top of the viewport.
+     Features:
+     - Shrinks on scroll (handled by JavaScript in index.js)
+     - Logo on the left, navigation links on the right
+     - Smooth scroll to section anchors
+     - Container constrains width on large screens
+     ========================================== -->
 <header>
-    <div class="header_logo">
-        <!-- Portfolio logo -->
-        <img src="img/Untitled drawing.png" alt="sheppardstudies_logo" class="header_logo__img">
+    <div class="container header-inner">
+        <!-- Logo Container -->
+        <div class="header_logo">
+            <img src="img/Untitled drawing.png"
+                 alt="sheppardstudies_logo"
+                 class="header_logo__img">
+        </div>
+
+        <!-- Primary Navigation -->
+        <nav class="nav">
+            <ul class="nav__list">
+                <!-- Navigation links use anchor links (#) to scroll to sections -->
+                <li class="nav__item"><a href="#about-me" class="nav__link">About Me</a></li>
+                <li class="nav__item"><a href="#work-experience" class="nav__link">Work Experience</a></li>
+                <li class="nav__item"><a href="#skilled-in" class="nav__link">Skills</a></li>
+                <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+                <li class="nav__item"><a href="#notable-highlights" class="nav__link">Certs and Merits</a></li>
+            </ul>
+        </nav>
     </div>
 </header>
 
-<!-- =================== Introduction Section =================== -->
-<section class="introduction" id="introduction">
-    <div class="introduction__container">
+<!-- ==========================================
+     ABOUT ME SECTION
+     ==========================================
+     Introduction and professional summary.
+     - Uses .section class for full-width background
+     - .section__inner constrains content width for readability
+     - scroll-margin-top accounts for sticky header offset
+     ========================================== -->
+<section id="about-me" class="section">
+    <div class="section__inner">
+        <h2 class="section__title">About Me</h2>
+        <p>
+            Cum Laude graduate from The University of North Carolina at Charlotte with over two years of specialized experience in financial technology. Currently serving as an ML Intelligent Automation Engineer at Wells Fargo, where I design and implement automation workflows that streamline critical business functions—reducing manual overhead by an average of 30% while adhering to strict financial industry regulations and controls.
 
-        <!-- ====== Column 1: About Me ====== -->
-        <div class="introduction_column">
-            <h3>About Me</h3>
-            <p>
-                Experienced software engineer with a demonstrated history of developing
-                scalable, robust software solutions that tackle business problems, reduce operational costs, and improve
-                workflow efficiency.
-            </p>
-            <p>
-                Actively leveraging ML and A.I. technologies, in which I utilize readily available data to
-                identify patterns, personalize user experiences, and predict outcomes based on prior historical sets.
-            </p>
-            <p>
-                Skilled in: Java, Data Structures and Algorithms, PyTorch, TensorFlow
-            </p>
-        </div>
+            <br><br>My work focuses on building scalable, distributed systems that deliver measurable impact to millions of users. I bring deep expertise in machine learning engineering and backend development, leveraging a diverse set of programming languages, frameworks, and tools to solve complex technical challenges and drive tangible business value in highly regulated environments.
+        </p>
+    </div>
+</section>
 
-        <!-- ====== Column 2: Work Experience ====== -->
-        <div class="introduction_column">
-            <h3>Work Experience</h3>
-            <p>
-                I possess over 2 years of experience within the Financial Technology industry.
-            </p>
+<!-- ==========================================
+     WORK EXPERIENCE SECTION
+     ==========================================
+     Details professional work history with key achievements.
+     - Uses .section--alt modifier for alternate background color (white)
+     - Highlights quantifiable results and technical implementations
+     ========================================== -->
+<section id="work-experience" class="section section--alt">
+    <div class="section__inner">
+        <h2 class="section__title">Work Experience</h2>
 
-            <h3>Notable experience highlights</h3>
-            <p>
-                Integrated REST APIs into automations, enabling real-time data exchange of
-                financial documents between secure data storage locations; utilized advanced OCR algorithms to extract,
-                verify, and prepare textual data for necessary business stakeholders.
-            </p>
-            <p>
-                Led the design, development, and deployment of a full-stack data application, seamlessly transferring
-                100,000+ records from a MongoDB database to a centralized dashboard with 10-second response times;
-                leveraged Python's Streamlit to build a dynamic interface for real-time data filtering.
-            </p>
+        <!-- Wells Fargo Position -->
+        <p> <b>Wells Fargo</b> - July 2022 - Present
+
+            <br><br>
+
+            • Engineered <b>distributed intelligent hyper-automations</b>, reducing execution time by 97%, from 6 hours to 10 minutes, delivering $500,000+ in annual operational savings
+            <br><br>• Integrated a <b>bidirectional LLM (BERT Model)</b> into an intelligent agent to classify 100,000+ textual descriptions as complaint or non-complaint with 87% accuracy, utilized by Front Office Desk Heads to improve customer satisfaction; collaborated with our <b>AI Center of Excellence (COE)</b> to fine-tune the model to reduce overfitting
+            <br><br>• Designed a scalable <b>REST + Kafka</b> ingestion pipeline that serialized and transferred 150K sensitive financial loan documents to Iron Mountain, ensuring 100% compliance with Q3 and Q4 Federal Retention deadlines
+            <br><br>• Designed and delivered a <b>full-stack data application</b> responsible for aggregating 100K+ traded-product SLA records from MongoDB into a centralized dashboard, utilized by Corporate Investment Banking Desk Heads, enabling real-time visibility for 15 trading desks; implemented pagination to ensure scalable, low-latency data retrieval; detected and corrected data-quality issues, increasing reporting reliability by 99% accuracy
+
+        </p>
+
+        <!-- Bank of America Position -->
+        <p><b> Bank of America</b> - January 2020 - March 2021
+
+        <br><br>• Spearheaded a data-collection project involving <b>Python querying-based algorithms</b> that effectively gathered and returned over 100,000+ internal breaches reported on our trading desk, increasing application performance by 12%
+        <br><br>• Met deadlines, while working under pressure in a fast-paced environment; delivered and presented weekly data decks, which allowed the Financial Desk Heads to <b>mitigate internal operational risks</b>
+        <br><br>• Optimized the performance of Bank of America’s interactive financial reports, <b>reducing response time</b> between partner-facing employees and Quantitative Analysts from 2-week communication periods to 1-week communication periods
+        </p>
+
+    </div>
+</section>
+
+
+
+<!-- ==========================================
+     SKILLS SECTION
+     ==========================================
+     Displays technical skills in a multi-column grid layout.
+     - Uses CSS Grid with auto-fit for responsive columns
+     - Custom bullet points styled via CSS ::before pseudo-element
+     - Automatically adjusts from 3-5 columns based on screen width
+     ========================================== -->
+<section id="skilled-in" class="section">
+    <div class="section__inner">
+        <h2 class="section__title">Skills and Technologies</h2>
+
+        <!-- Skills Grid: Automatically arranges skills in responsive columns -->
+        <ul class="skills-grid">
+            <li>Java</li>
+            <li>Python</li>
+            <li>Data Structures & Algorithms</li>
+            <li>PyTorch</li>
+            <li>TensorFlow</li>
+            <li>REST APIs</li>
+            <li>MongoDB</li>
+            <li>Streamlit</li>
+            <li>OCR Technologies</li>
+            <li>Machine Learning & AI</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ==========================================
+     PROJECTS SECTION
+     ==========================================
+     Showcases portfolio projects in a responsive card grid.
+     Features:
+     - Responsive grid layout (1-3 columns based on screen width)
+     - Project cards with hover effects (lift + shadow)
+     - Technology tags for each project
+     - Mixed media support (images and video)
+     - External links to repositories and downloadable files
+     ========================================== -->
+<section id="projects" class="section section--alt">
+    <div class="section__inner">
+        <h2 class="section__title">Projects</h2>
+
+        <!-- Projects Grid Container -->
+        <div class="projects">
+
+            <!-- ========== Project Card: Image Colorizer ========== -->
+            <article class="project-card">
+                <!-- Project Media: Clickable image linking to research paper -->
+                <div class="project-card__media">
+                    <a href="files/Image_Colorizer_ResearchPaper.pdf" download>
+                        <img src="img/ITCS_4152_ImageColorizer.png"
+                             alt="Image Colorizer Research Paper">
+                    </a>
+                </div>
+
+                <!-- Project Details -->
+                <div class="project-card__content">
+                    <h3>Image Colorizer</h3>
+                    <p>Fine-tuned Stable Diffusion model for black & white image colorization.</p>
+
+                    <!-- Technology Tags -->
+                    <div class="project-card__tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Stable Diffusion</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Deep Learning</span>
+                    </div>
+
+                    <!-- Call-to-Action Link -->
+                    <a href="files/Image_Colorizer_ResearchPaper.pdf"
+                       download
+                       class="project-card__link">
+                        Download Research Paper →
+                    </a>
+                </div>
+            </article>
+
+            <!-- ========== Project Card: Evolve Game ========== -->
+            <article class="project-card">
+                <!-- Project Media: Clickable image linking to GitHub repository -->
+                <div class="project-card__media">
+                    <a href="https://github.com/hsheppard-cs/ITCS_4230_Evolve/tree/main" target="_blank">
+                        <img src="img/ITCS_4230_Evolve.png"
+                             alt="Evolve Game Project">
+                    </a>
+                </div>
+
+                <!-- Project Details -->
+                <div class="project-card__content">
+                    <h3>Evolve</h3>
+                    <p>Game developed using GameMaker Language (GML).</p>
+
+                    <!-- Technology Tags -->
+                    <div class="project-card__tags">
+                        <span class="tag">GameMaker</span>
+                        <span class="tag">GML</span>
+                        <span class="tag">Game Design</span>
+                    </div>
+
+                    <!-- Call-to-Action Link (opens in new tab) -->
+                    <a href="https://github.com/hsheppard-cs/ITCS_4230_Evolve/tree/main"
+                       target="_blank"
+                       class="project-card__link">
+                        View Repository →
+                    </a>
+                </div>
+            </article>
+
+            <!-- ========== Project Card: Same Rhythm Radar ========== -->
+            <article class="project-card">
+                <!-- Project Media: Video demonstration with native controls -->
+                <div class="project-card__media">
+                    <video controls>
+                        <source src="vid/SameRhythmRadar_Demo.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- Project Details -->
+                <div class="project-card__content">
+                    <h3>Same Rhythm Radar</h3>
+                    <p>LLM-based music recommendation system.</p>
+
+                    <!-- Technology Tags -->
+                    <div class="project-card__tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">OpenAI LLM</span>
+                        <span class="tag">NLP</span>
+                    </div>
+
+                    <!-- Call-to-Action Link (opens in new tab) -->
+                    <a href="https://github.com/BerkleySitterson/SRR"
+                       target="_blank"
+                       class="project-card__link">
+                        View Repository →
+                    </a>
+                </div>
+            </article>
+
         </div>
     </div>
 </section>
 
-<!-- =================== Image Carousel Section =================== -->
-<section class="content-body" id="content-body">
+<!-- ==========================================
+     CERTIFICATIONS & MERITS SECTION
+     ==========================================
+     Displays professional certifications and achievements.
+     Features:
+     - Responsive grid layout
+     - Certification cards with logos and metadata
+     - Hover effects for visual feedback
+     - Flex layout for header (logo + text alignment)
+     ========================================== -->
+<section id="notable-highlights" class="section">
+    <div class="section__inner">
+        <h2 class="section__title">Certifications & Merits</h2>
 
-    <h3>Projects</h3>
+        <!-- Certifications Grid Container -->
+        <div class="cert-grid">
 
-    <!-- Carousel Images -->
-    <div class="content-images">
+            <!-- ========== Certification: Google Cloud ========== -->
+            <article class="cert-card">
+                <!-- Certification Header: Logo and title side-by-side -->
+                <div class="cert-card__header">
+                    <img src="img/google-cloud-logo.png"
+                         alt="Google Cloud Logo"
+                         class="cert-card__logo">
+                    <div>
+                        <h3>Associate Cloud Engineer</h3>
+                        <p class="cert-card__issuer">Google Cloud</p>
+                    </div>
+                </div>
 
-        <!-- Slide 1 -->
-        <div class="myImages" style="text-align: center">
-            <p>Image Colorizer</p>
-            <p>Fine-tuning of a Pretrained Stable Diffusion Model to<br>colorize B/W images</p>
-            <p>Download full research paper below</p>
-            <p><a href="files/Image_Colorizer_ResearchPaper.pdf" download>
-            <img src="img/ITCS_4152_ImageColorizer.png" alt="Computer Vision, Image Colorizer Research Paper" width="400" height="400">
-            </a></p>
+                <!-- Certification Metadata -->
+                <p class="cert-card__meta">Issued January 2026</p>
+            </article>
+
+            <!-- ========== Certification: UiPath ========== -->
+            <article class="cert-card">
+                <!-- Certification Header: Logo and title side-by-side -->
+                <div class="cert-card__header">
+                    <img src="img/uipath-logo.png"
+                         alt="UiPath Logo"
+                         class="cert-card__logo">
+                    <div>
+                        <h3>Automation Developer Associate</h3>
+                        <p class="cert-card__issuer">UiPath Certified Professional</p>
+                    </div>
+                </div>
+
+                <!-- Certification Metadata -->
+                <p class="cert-card__meta">Issued January 2025</p>
+            </article>
+
         </div>
-
-        <!-- Slide 2 -->
-        <div class="myImages" style="text-align: center">
-            <p>Evolve</p>
-            <p>Programming Language: GameMaker Language (GML)</p>
-            <p><a href="https://github.com/hsheppard-cs/ITCS_4230_Evolve/tree/main" target="_blank">
-            <img src="img/ITCS_4230_Evolve.png" alt="Video Game Development, Interactive and Immersive Game" width="400" height="400">
-                </a></p>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="myImages" style="text-align: center">
-            <p><b>Same Rhythm Radar, an LLM Music Recommender</b></p>
-            <p>Programming Languages: Python, HTML, CSS</p>
-            <p>Frameworks Utilized: Bootstrap CSS</p>
-            <p><a href="https://github.com/BerkleySitterson/SRR" target="_blank">
-            <img src="img/SameRhythmRadar.png" alt="LLM" width="400" height="400">
-                </a></p>
-        </div>
-
     </div>
-
-    <!-- Carousel Dots/Indicators -->
-    <div style="text-align: center">
-        <button onclick="changeSlide(-1)">Previous</button>
-        <button onclick="changeSlide(1)">Next</button>
-    </div>
-
 </section>
 
-<!-- =================== Footer Section =================== -->
+<!-- ==========================================
+     FOOTER SECTION
+     ==========================================
+     Contains social media links and contact information.
+     - Centered layout
+     - Font Awesome icons for social platforms
+     - Hover effects for visual feedback
+     ========================================== -->
 <footer class="footer">
-    <!-- Social Media Links -->
-    <ul class="social-list__footer">
-        <li class="social-list__item">
-            <a class="social-list__link" href="https://www.linkedin.com/in/hamilton-sheppard/">
-                <i class="fa-brands fa-linkedin fa-xl"></i>
-            </a>
-        </li>
-    </ul>
+    <div class="container">
+        <!-- Social Media Links List -->
+        <ul class="social-list__footer">
+            <li class="social-list__item">
+                <!-- LinkedIn Profile Link (opens in new tab) -->
+                <a class="social-list__link"
+                   href="https://www.linkedin.com/in/hamilton-sheppard/"
+                   target="_blank"
+                   aria-label="Visit LinkedIn profile">
+                    <i class="fa-brands fa-linkedin fa-xl"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
 </footer>
 
-<!-- JavaScript for slideshow functionality -->
+<!-- ==========================================
+     JavaScript
+     ==========================================
+     Main functionality includes:
+     - Slideshow navigation (legacy code, currently commented in CSS)
+     - Shrinking header on scroll effect
+     ========================================== -->
 <script src="js/index.js"></script>
 
 </body>
